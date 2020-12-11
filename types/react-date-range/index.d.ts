@@ -100,6 +100,12 @@ export interface CommonCalendarProps {
     dragSelectionEnabled?: boolean;
     /** default: false */
     fixedHeight?: boolean;
+    /** default: { enabled: false } */
+    scroll?: ScrollOptions;
+    /** default: enUs from locale. Complete list here https://github.com/Adphorus/react-date-range/blob/next/src/locale/index.js */
+    locale?: Locale;
+    /** default: E */
+    weekdayDisplayFormat?: string;
 }
 
 export interface CalendarProps extends CommonCalendarProps {
@@ -107,19 +113,20 @@ export interface CalendarProps extends CommonCalendarProps {
     date: DateInputType;
 }
 
-export class Calendar extends React.Component<CalendarProps> { }
+export class Calendar extends React.Component<CalendarProps> {
+    /** default: 0 */
+    weekStartsOn?: number;
+    /** default: none */
+    color?: string;
+}
 
 export interface DateRangeProps extends Range, CommonCalendarProps {
-    /** default: enUs from locale. Complete list here https://github.com/Adphorus/react-date-range/blob/next/src/locale/index.js */
-    locale?: Locale;
     /** default: false */
     linkedCalendars?: boolean;
     /** default: 2 */
     calendars?: number;
     /** default: none */
     ranges?: Range[];
-    /** default: { enabled: false } */
-    scroll?: ScrollOptions;
     /** default: false */
     showSelectionPreview?: boolean;
     /** default: false */
@@ -154,8 +161,6 @@ export interface DateRangeProps extends Range, CommonCalendarProps {
     dateDisplayFormat?: string;
     /** default: d */
     dayDisplayFormat?: string;
-    /** default: E */
-    weekdayDisplayFormat?: string;
     /** default: MMM yyyy */
     monthDisplayFormat?: string;
     /** default: vertical */
